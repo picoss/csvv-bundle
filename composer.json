@@ -1,0 +1,29 @@
+{
+  "name": "picoss/cvss-bundle",
+  "license": "Apache-2.0",
+  "type": "symfony-bundle",
+  "description": "CVSS integration in Symfony2",
+  "keywords": ["security", "cvss", "symfony", "symfony2", "bundle"],
+  "authors": [
+    {
+      "name": "Picoss",
+      "email": "romain.honel@gmail.com",
+      "homepage": "https://github.com/picoss"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Picoss\\CvssBundle\\": ""
+    }
+  },
+  "require": {
+    "php": ">=5.5.9",
+    "picoss/cvss": "~1.0",
+    "symfony/framework-bundle": "~2.8 || ^3.0",
+    "symfony/form": "~2.8 || ^3.0",
+    "twig/twig": "~1.14"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.0.*"
+  }
+}
