@@ -71,7 +71,7 @@ class Cvss3TypeTest extends \Symfony\Component\Form\Test\TypeTestCase
 
     protected function setUp()
     {
-        $this->cvss = $this->createMock(Cvss3::class);
+        $this->cvss = $this->getMock(Cvss3::class);
         $this->cvss = new Cvss3();
 
         parent::setUp();
