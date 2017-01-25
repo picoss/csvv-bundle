@@ -74,7 +74,7 @@ class Cvss3Type extends AbstractType
         return array(
             'choices' => array_combine(array_keys($values), array_keys($values)),
             'choice_label' => function ($value, $key, $index) use ($metric) {
-                $this->cvss->getMetricValueTransId($metric, $value);
+                return $this->cvss->getMetricValueTransId($metric, $value);
             },
             'label' => $this->cvss->getMetricTransId($metric),
             'expanded' => true,
