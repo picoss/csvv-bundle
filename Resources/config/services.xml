@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="picoss.cvss" class="Picoss\Cvss\Cvss3" shared="false">
+        <service id="picoss.cvss" class="Picoss\CvssBundle\Cvss\Cvss3" shared="false">
         </service>
 
         <service id="picoss.form.type.cvss3" class="Picoss\CvssBundle\Form\Type\Cvss3Type">
