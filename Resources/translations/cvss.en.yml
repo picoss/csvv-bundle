@@ -23,11 +23,11 @@ cvss.metric.mc: Modified Confidentiality (MC)
 cvss.metric.mi: Modified Integrity (MI)
 cvss.metric.ma: Modified Availability (MA)
 
-cvss.sverity.n: None
-cvss.sverity.l: Low
-cvss.sverity.m: Medium
-cvss.sverity.h: High
-cvss.sverity.c: Critical
+cvss.severity.n: None
+cvss.severity.l: Low
+cvss.severity.m: Medium
+cvss.severity.h: High
+cvss.severity.c: Critical
 
 cvss:
   metric:
