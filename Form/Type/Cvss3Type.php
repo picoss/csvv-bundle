@@ -38,21 +38,24 @@ class Cvss3Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
+        $options['base_options']['required'] = $options['required'];
+        $options['temporal_options']['required'] = $options['required'];
+        $options['environmental_options']['required'] = $options['required'];
+
         foreach ($this->cvss->getBaseMetricDefinitions() as $metric => $values) {
-            $builder->add($metric, $options['type'], array_merge($this->getDefaultFieldOptions($metric, $values), $options['options'], array(
-                'required' => true,
-            )));
+            dump(array_merge($this->getDefaultFieldOptions($metric, $values), $options['options'], $options['base_options']));
+            $builder->add($metric, $options['type'], array_merge($this->getDefaultFieldOptions($metric, $values), $options['options'], $options['base_options']));
         }
 
         if ($options['temporal']) {
             foreach ($this->cvss->getTemporalMetricDefinitions() as $metric => $values) {
-                $builder->add($metric, $options['type'], array_merge($this->getDefaultFieldOptions($metric, $values), $options['options']));
+                $builder->add($metric, $options['type'], array_merge($this->getDefaultFieldOptions($metric, $values), $options['options'], $options['temporal_options']));
             }
         }
 
         if ($options['environmental']) {
             foreach ($this->cvss->getEnvironmentalMetricDefinitions() as $metric => $values) {
-                $builder->add($metric, $options['type'], array_merge($this->getDefaultFieldOptions($metric, $values), $options['options']));
+                $builder->add($metric, $options['type'], array_merge($this->getDefaultFieldOptions($metric, $values), $options['options'], $options['environmental_options']));
             }
         }
 
@@ -72,6 +75,7 @@ class Cvss3Type extends AbstractType
     protected function getDefaultFieldOptions($metric, $values)
     {
         return array(
+            'placeholder' => false,
             'choices' => array_combine(array_keys($values), array_keys($values)),
             'choice_label' => function ($value, $key, $index) use ($metric) {
                 return $this->cvss->getMetricValueTransId($metric, $value);
@@ -91,13 +95,19 @@ class Cvss3Type extends AbstractType
         $resolver->setDefaults(array(
             'type' => ChoiceType::class,
             'options' => array(),
+            'base_options' => array(),
             'temporal' => false,
+            'temporal_options' => array(),
             'environmental' => false,
+            'environmental_options' => array(),
         ));
 
         $resolver->setAllowedTypes('options', 'array');
+        $resolver->setAllowedTypes('base_options', 'array');
         $resolver->setAllowedTypes('temporal', 'boolean');
+        $resolver->setAllowedTypes('temporal_options', 'array');
         $resolver->setAllowedTypes('environmental', 'boolean');
+        $resolver->setAllowedTypes('environmental_options', 'array');
     }
 
     /**
