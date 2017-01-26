@@ -43,7 +43,6 @@ class Cvss3Type extends AbstractType
         $options['environmental_options']['required'] = $options['required'];
 
         foreach ($this->cvss->getBaseMetricDefinitions() as $metric => $values) {
-            dump(array_merge($this->getDefaultFieldOptions($metric, $values), $options['options'], $options['base_options']));
             $builder->add($metric, $options['type'], array_merge($this->getDefaultFieldOptions($metric, $values), $options['options'], $options['base_options']));
         }
 
