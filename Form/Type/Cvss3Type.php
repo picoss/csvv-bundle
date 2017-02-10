@@ -37,11 +37,6 @@ class Cvss3Type extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
-        $options['base_options']['required'] = $options['required'];
-        $options['temporal_options']['required'] = $options['required'];
-        $options['environmental_options']['required'] = $options['required'];
-
         foreach ($this->cvss->getBaseMetricDefinitions() as $metric => $values) {
             $builder->add($metric, $options['type'], array_merge($this->getDefaultFieldOptions($metric, $values), $options['options'], $options['base_options']));
         }
