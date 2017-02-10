@@ -36,6 +36,6 @@ class CvssToArrayTransformer implements DataTransformerInterface
             return;
         }
 
-        return Cvss3::buildVector($value);
+        return Cvss3::buildVector(array_filter($value));
     }
 }
