@@ -37,4 +37,9 @@ class Cvss3 extends BaseCvss3
         return strtolower(sprintf('cvss.severity.%s', $this->getEnvironmentalScoreSeverity()));
     }
 
+    public function getOverallSeverityTransId()
+    {
+        return strtolower(sprintf('cvss.severity.%s', $this->getOverallScoreSeverity()));
+    }
+
 }
